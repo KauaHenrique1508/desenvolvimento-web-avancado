@@ -8,36 +8,37 @@ const usuarios = [
 
 // CALCULO DO VALOR TOTAL DE COMPRAS
 console.log("Valor total de compras de cada usuário:")
-for(let usuario of usuarios){
+for(let usuario of usuarios){  // let of percorre os elementos do array, ou seja, cada objeto usuario
 let calcularTotalCompras = (compras) => {
     return compras.reduce((total, valor) => total + valor, 0)
 }
- console.log(calcularTotalCompras(usuario.compras))
+ console.log(calcularTotalCompras(usuario.compras)) //explicação do código: a função calcularTotalCompras recebe um array de compras e utiliza o método .reduce para somar todos os valores do array, começando com um total inicial de 0. O resultado é o valor total das compras para cada usuário, que é impresso no console.
 }
 
 //MOSTRAR USUÁRIOS ATIVOS
-console.log("Usuários ativos:") //usuando arrow function
+console.log("Usuários ativos:") //usando arrow function
 
-for(let usuario of usuarios){
+for(let usuario of usuarios){ // let of percorre os elementos do array, ou seja, cada objeto usuario
     const usuariosAtivos = (usuario) => {
         if(usuario.ativo){
             console.log(usuario.nome) 
         }   
 }
-    usuariosAtivos(usuario) //faz a chamada da função 
+    usuariosAtivos(usuario) //faz a chamada da função   explicação do código: a função usuariosAtivos recebe um objeto usuario e verifica se a propriedade "ativo" é verdadeira. Se for, ela imprime o nome do usuário no console. O loop for percorre cada usuário na lista de usuários e chama a função usuariosAtivos para verificar se cada um é ativo ou não.
 }
 
 //MOSTRAR MAIORES DE 18 ANOS
 console.log("Usuários maiores de 18 anos:")
 
 const maioresDe18 = (usuario) => {
+    
         for( n in usuario){
-        if(usuario[n].idade > 18){
+        if(usuario[n].idade >= 18){
             console.log(usuario[n])
         }
     }
 }
-maioresDe18(usuarios) // mostra os objetos dos usuários maiores de 18 anos
+maioresDe18(usuarios) // mostra os objetos dos usuários maiores de 18 anos   explicação do código: a função maioresDe18 recebe um objeto usuario e utiliza um loop for...in para iterar sobre as propriedades do objeto. Para cada propriedade, ela verifica se a idade do usuário é maior que 18. Se for, ela imprime o objeto do usuário no console. A função é chamada com a lista de usuários para verificar cada um deles.
 
 
 //USUARIO COM MAIOR VOLUME
@@ -55,6 +56,7 @@ const usuarioMaiorVolume = (usuarios) => {
     return usuarioMaior;
 }
 console.log(usuarioMaiorVolume(usuarios)); //mostra o objeto do usuário com maior volume de compras
+//explicação do código: a função usuarioMaiorVolume recebe uma lista de usuários e inicializa duas variáveis: maiorVolume para armazenar o valor do maior volume de compras encontrado e usuarioMaior para armazenar o usuário correspondente. O loop for percorre cada usuário na lista, calcula o total de compras utilizando .reduce e compara com o maiorVolume atual. Se o total de compras for maior, atualiza maiorVolume e usuarioMaior. No final, a função retorna o usuário com o maior volume de compras, que é impresso no console.
 
 //COERÇÃO DE TIPOS
 console.log("Coerção de tipos:")
@@ -104,7 +106,7 @@ Resposta: O comportamento de "this" em arrow functions é léxico, o que signifi
  usuariosInativos: 2,
  mediaIdade: 21.8,
  maiorComprador: "Carlos"
-} */
+} *//* 
 console.log("Exercício extra: Gerar relatório de usuários")
 const gerarRelatorio = (usuarios) => {
     const totalUsuarios = usuarios.length
@@ -121,5 +123,6 @@ const gerarRelatorio = (usuarios) => {
     usuariosInativos.length,
     mediaIdade,
     maiorComprador.nome
-   )
-}      
+   ) */
+//}      
+ //.reduce geralmente é usado para acumular um valor a partir de um array, como somar idades ou calcular o total de compras. 
