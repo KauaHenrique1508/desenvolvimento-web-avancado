@@ -26,3 +26,42 @@ const nomeCliente = pedidos
   .map(p => p.cliente)
 
 console.log("NOMES DOS CLIENTES: ", nomeCliente)
+
+// Calcule o valor total de vendas (somente pedidos aprovados)
+
+const valorTotal = pedidos
+.filter(p => p.status === "aprovado")
+.map(p => p.total)
+.reduce((soma, p) => soma + p, 0)
+
+console.log("VALOR TOTAL DE PEDIDOS APROVADOS: ", valorTotal)
+
+//o valor médio das vendas usando reduce
+const valorMedio = pedidos
+  .filter(p => p.status === "aprovado")
+  .map(p => p.total)
+  .reduce((soma, p) => soma + p, 0) / statusAprovado.length
+
+console.log("VALOR MÉDIO DAS VENDAS APROVADAS: ", valorMedio)
+
+/* Hash Table (Agrupamento por Cliente)
+Crie uma estrutura que agrupe os pedidos por cliente. */
+//usando reduce e Map
+
+const agrupamentoReduce = pedidos.reduce((acc, p) => {
+  if (!acc[p.cliente]) {
+    acc[p.cliente] = [] // Verifica se já existe uma lista para o cliente, caso contrário, cria uma nova lista vazia
+  }
+  acc[p.cliente].push(p)  // Adiciona o pedido atual à lista do cliente(push) push : Adiciona um elemento ao final de um array. Se a lista do cliente já existir, o pedido atual será adicionado a essa lista. Caso contrário, uma nova lista será criada e o pedido será adicionado a ela.
+  return acc
+}, {})
+
+console.log("PEDIDOS AGRUPADOS POR CLIENTE: ", agrupamentoReduce);
+
+/* const mapa = new Map()
+pedidos.forEach(p => {
+  const listaCliente = mapa.get(p.cliente) || [] // Verifica se já existe uma lista para o cliente, caso contrário, cria uma nova lista vazia
+  listaCliente.push(p) // Adiciona o pedido atual à lista do cliente(push) push : Adiciona um elemento ao final de um array. Se a lista do cliente já existir, o pedido atual será adicionado a essa lista. Caso contrário, uma nova lista será criada e o pedido será adicionado a ela.
+  mapa.set(p.cliente, listaCliente)
+})
+console.log("PEDIDOS AGRUPADOS POR CLIENTE: ", mapa) */
