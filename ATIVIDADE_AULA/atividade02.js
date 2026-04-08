@@ -2,7 +2,7 @@ const numeros = [1,2,3,4,5,6]
 
 const resultado = numeros
   .filter(n => n % 2 === 0)
-  .map(n => n * 2)
+  .map(n => n * 2) //.map permite transformar cada elemento do array, 
   .reduce((acc, n) => acc + n, 0)
 
 console.log(resultado)
